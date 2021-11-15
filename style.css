@@ -13,7 +13,9 @@ header {
     background-image: url("./images/pattern-bg.png");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 30vh;
+    height: 200px;
+    position: relative;
+    z-index: 10;
 }
 
 .container {
@@ -116,7 +118,7 @@ header {
 
 .map {
     position: absolute;
-    top: 30vh;
+    top: 200px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -133,11 +135,33 @@ header {
 }
 
 @media (max-width: 575px) {
+    .title {
+        font-size: calc(14px + 3vmin);
+        margin-bottom: 1rem;
+    }
+    .ip-input, .ip-search-btn {
+        padding: 0.7rem;
+        font-size: .9rem;
+    }
+    .ip-input {
+        border-radius: .5rem 0 0 .5rem;
+    }
+    .ip-search-btn {
+        border-radius: 0 .5rem .5rem 0;
+    }
     .ip-results {
         grid-template-columns: repeat(1, 1fr);
+        padding: calc(8px + 2vmin);
+        border-radius: .5rem;
     }
     .ip-results-item:nth-child(1),
     .ip-results-item:nth-child(3) {
         border-right: none;
+    }
+    .ip-results-item {
+        padding: 0;
+    }
+    .item-content {
+        font-size: 1rem;
     }
 }
