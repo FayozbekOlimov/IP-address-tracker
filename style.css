@@ -99,6 +99,10 @@ header {
     padding: 0 .5rem;
 }
 
+.ip-results-item:first-child .fas {
+    display: none;
+}
+
 .ip-results-item:not(:last-child) {
     border-right: 1px solid #959595;
 }
@@ -153,6 +157,12 @@ header {
         grid-template-columns: repeat(1, 1fr);
         padding: calc(8px + 2vmin);
         border-radius: .5rem;
+        height: calc(80px - 1.35vmin);
+        overflow: hidden;
+        transition: height 0.3s linear;
+    }
+    .ip-results.show {
+        height: auto;
     }
     .ip-results-item:nth-child(1),
     .ip-results-item:nth-child(3) {
@@ -160,6 +170,11 @@ header {
     }
     .ip-results-item {
         padding: 0;
+    }
+    .ip-results-item:first-child .fas {
+        display: block;
+        float: right;
+        font-size: 18px;
     }
     .item-content {
         font-size: 1rem;

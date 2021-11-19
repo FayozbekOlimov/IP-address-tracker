@@ -19,6 +19,7 @@ tiles.addTo(myMap);
 
 const form = document.getElementById('form');
 const ipInput = document.querySelector('.ip-input');
+document.querySelector('.ip-results').style.display = 'none';
 
 form.addEventListener('submit', getResult);
 
@@ -28,14 +29,25 @@ async function getResult(e) {
     const data = await req.json();
 
     const { ip, isp, location: {region, country, timezone, lat, lng} } = data;
+    document.querySelector('.ip-results').style.display = 'grid';
 
     document.getElementById('ip').innerText = ip;
     document.getElementById('location').innerText = region + ', ' + country;
     document.getElementById('timezone').innerText = 'UTC ' + timezone;
     document.getElementById('isp').innerText = isp;
 
-    myMap.setView([lat, lng], 16);
+    myMap.setView([lat, lng], 13);
     marker.setLatLng([lat, lng]);
 
     ipInput.value = '';
+}
+
+if(window.innerWidth < 575) {
+    document.querySelector('.ip-results-item').addEventListener('click', () => {
+        const results = document.querySelector('.ip-results');
+        results.classList.toggle('show');
+        document.getElementById('mobile-icon').className = results.className.includes('show') 
+            ? 'fas fa-chevron-up'
+            : 'fas fa-chevron-down';
+    });
 }
